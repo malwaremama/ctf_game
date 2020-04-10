@@ -15,11 +15,13 @@ variable "zones" {
 }
 
 variable "trusted_network" {
-  description = "0.0.0.0/0"
+  description = "CIDR formatted IP (<IP Address>/32) or network that will be allowed access (you can use 0.0.0.0/0 for unrestricted access)"
+  default     = "0.0.0.0/0"
 }
 
 variable "name" {
-  description = "secops"
+  description = "An idenfitying name used for names of cloud resources"
+  default     = "secops"
 }
 
 variable "cidr" {
@@ -31,7 +33,8 @@ variable "machine_type" {
 }
 
 variable "gcp_key_filename" {
-  description = "secops-iac-ctf-000378-ca7e78916a38.json"
+  description = "What's the json key filename located in your <home>/.gcloud/ directory path?"
+  default     = "secops-iac-ctf-000378-ca7e78916a38.json"
 }
 
 variable "remote_user" {
