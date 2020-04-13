@@ -1,7 +1,7 @@
 provider "panos" {
-    hostname = "127.0.0.1"
-    username = "terraform"
-    password = "secret"
+  hostname = "127.0.0.1"
+  username = "terraform"
+  password = "secret"
 }
 
 module "networking" {
@@ -12,13 +12,13 @@ module "networking" {
 }
 
 module "policies" {
-  source = "./modules/policies"
-  device_group = var.device_group
-  zone_untrust = module.networking.zone_untrust
+  source            = "./modules/policies"
+  device_group      = var.device_group
+  zone_untrust      = module.networking.zone_untrust
   interface_untrust = module.networking.interface_untrust
 }
 
-resource "null_resource" "commit_panorama" {ax
+resource "null_resource" "commit_panorama" {
 
   provisioner "local-exec" {
     command = "${path.module}/commit"
