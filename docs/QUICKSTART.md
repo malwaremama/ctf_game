@@ -4,6 +4,13 @@ Do these steps to get your local machine ready.
 
 ## Prepare your local environment.
 
+- Add your public key half to /gcp/config/authorized_keys file
+  - For example:
+  
+```bash
+cat ~/.ssh/.id_rsa.pub >> {PATH_TO_REPO_CLONE}/gcp/config/authorized_keys
+```
+
 - Create a file called /aws/terraform.tfvars
   - For example:
 
