@@ -1,0 +1,1 @@
+we will use ansible to configure the hosts

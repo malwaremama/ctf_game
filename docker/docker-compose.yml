@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  secops_ctf:
+    hostname: secops-docker
+    volumes:
+      - ..:/root
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
