@@ -16,29 +16,41 @@
 
 
 ############################################################################################
-# CREATE BUCKET, CREATE DIRECTORIES & UPLOAD VM-SERIES BOOTSTRAP FILES
+# CREATE DATABASE SERVER INSTANCE
 ############################################################################################
 
-resource "google_storage_bucket" "bootstrap" {
-  name          = "bootstrap-bucket-${var.bootstrap_project}"
-  location      = var.bootstrap_region
-  storage_class = "REGIONAL"
-  force_destroy = true
+resource "google_compute_instance" "dbserver" {
+  name                      = var.db_name
+  machine_type              = var.db_machine_type
+  zone                      = var.db_zone
+  can_ip_forward            = true
+  allow_stopping_for_update = true
+  count                     = 1
+
+  metadata = {
+    serial-port-enable     = true
+    block-project-ssh-keys = false
+    ssh-keys               = var.db_ssh_key
+  }
+
+  labels = {
+    server-type = "database"
+  }
+
+  metadata_startup_script = file("${path.module}/../../scripts/dbserver-startup.sh")
+
+  service_account {
+    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+  }
+
+  network_interface {
+    subnetwork = var.db_subnet_id
+    network_ip = var.db_ip
+  }
+
+  boot_disk {
+    initialize_params {
+      image = var.db_image
+    }
+  }
 }
-
-resource "google_storage_bucket_object" "bootstrap_dirs" {
-  for_each = toset(var.bootstrap_directories)
-
-  name   = each.value
-  source = "/dev/null"
-  bucket = google_storage_bucket.bootstrap.name
-}
-
-resource "google_storage_bucket_object" "bootstrap_files" {
-  for_each = fileset("${path.module}/files", "**")
-
-  name   = each.value
-  source = "${path.module}/files/${each.value}"
-  bucket = google_storage_bucket.bootstrap.name
-}
-

@@ -13,6 +13,7 @@ crash.log
 # version control.
 #
 terraform.tfvars
+gcp/deployment/*.out
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
@@ -33,6 +34,7 @@ override.tf.json
 
 .DS_store
 docs/_build/
+
 
 # /root stuff
 .bash_history

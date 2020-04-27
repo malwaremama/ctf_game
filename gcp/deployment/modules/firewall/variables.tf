@@ -1,3 +1,4 @@
+// FIREWALL Variables
 variable "fw_name" {
   description = "The name of the firewall instance"
   type        = string
@@ -21,7 +22,6 @@ variable "fw_machine_type" {
 variable "fw_machine_cpu" {
   description = "The GCE machine minumum CPU size for the firewall instance"
   type        = string
-
 }
 
 variable "fw_bootstrap_bucket" {
@@ -61,5 +61,35 @@ variable "fw_untrust_ip" {
 
 variable "fw_untrust_rule" {
   description = "The GCP firewall rule for the firewall intance untrust interface"
+  type        = string
+}
+
+variable "fw_web_subnet" {
+  description = "The web subnet of the firewall instance"
+  type        = string
+}
+
+variable "fw_web_ip" {
+  description = "The IP address of firewall instance web interface"
+  type        = string
+}
+
+variable "fw_web_rule" {
+  description = "The GCP firewall rule for the firewall intance web interface"
+  type        = string
+}
+
+variable "fw_db_subnet" {
+  description = "The database subnet of the firewall instance"
+  type        = string
+}
+
+variable "fw_db_ip" {
+  description = "The IP address of firewall instance database interface"
+  type        = string
+}
+
+variable "fw_db_rule" {
+  description = "The GCP firewall rule for the firewall intance database interface"
   type        = string
 }

@@ -1,8 +1,0 @@
-type=dhcp-client 
-panorama-server=52.88.222.255
-tplname=Demo_Stack
-dgname=Demo_DG
-dhcp-accept-server-hostname=yes 
-dhcp-accept-server-domain=yes 
-vm-auth-key=524671989742752
-

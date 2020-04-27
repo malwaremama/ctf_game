@@ -54,4 +54,8 @@ Terraform Time
 
 ::
 
+    cd gcp/deployment
+    terraform init
+    terraform plan -out franklin.out
+    terraform apply "franklin.out"
 
