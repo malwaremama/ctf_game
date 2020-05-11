@@ -52,4 +52,4 @@ print-status:
 python: ## setup python stuff
 	if [ ! -f /.dockerenv ]; then echo "Run make python inside docker container" && exit 1; fi
 	$(MAKE) print-status MSG="Set up the Python environment"
-	if [ -f '$(REQS)' ]; then python -m pip install -r$(REQS); fi
+	if [ -f '$(REQS)' ]; then python3 -m pip install -r$(REQS); fi

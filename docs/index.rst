@@ -12,16 +12,9 @@ Welcome to home documentation
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
-   :caption:Introduction
+   :numbered:
 
-   Introduction/introduction
-
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption:Setup
-
-   Setup/vscode
-   Setup/mac_quickstart
-   Setup/image_setup
+   _source/introduction
+   _source/vscode
+   _source/mac_quickstart
+   _source/image_setup

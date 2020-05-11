@@ -3,7 +3,7 @@ services:
   secops_ctf:
     hostname: secops-docker
     volumes:
-      - ..:/root
+      - ..:/tmp/project
     build:
       context: ..
       dockerfile: docker/Dockerfile

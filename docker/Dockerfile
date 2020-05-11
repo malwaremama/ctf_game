@@ -1,7 +1,15 @@
-FROM python:3.8.1-buster
+FROM debian:buster
 LABEL AUTHOR="fdiaz@paloaltonetworks.com"
 ENV container secops_ctf
 ENV DEBIAN_FRONTEND noninteractive
-ENV PYTHONPATH=/usr/local/lib/python3.8/site-packages
 
-WORKDIR /root
+ADD . /tmp/project
+WORKDIR /tmp/project
+
+#RUN make docs
+# env stuff
+RUN \
+apt update;\
+apt -y install apt-utils; \
+apt -y install make latexmk python3-pip; \
+apt install -y texlive-latex-extra latexmk
