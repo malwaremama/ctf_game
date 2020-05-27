@@ -87,6 +87,12 @@ variable "vm_auth_key" {
   type        = string
 }
 
+variable "source_image" {
+  description = "packer generated CTF player image"
+  type        = string
+  default     = "secops-ctf-attacker"
+}
+
 ############################################################################################
 # Copyright 2019 Palo Alto Networks.
 #

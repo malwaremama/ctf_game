@@ -4,6 +4,20 @@ provider "google" {
   credentials = file(format("~/.config/gcloud/%s", var.gcp_key_filename))
 }
 
+module "bootstrap" {
+  source  = "stealthllama/panos-bootstrap/google"
+  version = "0.9.0"
+
+  bootstrap_project = var.project
+  bootstrap_region  = var.region
+
+  hostname        = var.fw_name
+  panorama-server = var.panorama
+  tplname         = var.tplname
+  dgname          = var.dgname
+  vm-auth-key     = var.vm_auth_key
+}
+
 module "vpc" {
   source = "./modules/vpc"
 
@@ -71,6 +85,23 @@ module "firewall" {
   fw_untrust_subnet = module.vpc.untrust_subnet
   fw_untrust_ip     = "10.5.1.4"
   fw_untrust_rule   = module.vpc.untrust-allow-inbound-rule
+
+  fw_web_subnet = module.vpc.web_subnet
+  fw_web_ip     = "10.5.2.4"
+  fw_web_rule   = module.vpc.web-allow-outbound-rule
+
+  fw_db_subnet = module.vpc.db_subnet
+  fw_db_ip     = "10.5.3.4"
+  fw_db_rule   = module.vpc.db-allow-outbound-rule
+
+}
+
+module "player" {
+  source = "./modules/player"
+
+  #hc_name      = "player-health-check"
+  player_source_image = "secops-ctf-attacker"
+  #desc_inst    = "CTF player node"
 
 }
 

@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "my_home": "{{env `HOME`}}",
+    "service_key": "",
+    "version": ""
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "{{user `my_home`}}/.config/gcloud/{{user `service_key`}}",
+      "project_id": "ctf-sko21",
+      "source_image_family": "ubuntu-1804-lts",
+      "zone": "us-central1-a",
+      "image_description": "SecOps CTF Attacker Host",
+      "image_name": "secops-ctf-attacker-ubuntu-18",
+      "ssh_username": "root",
+      "metadata": {
+        "enable-oslogin": "false"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt update",
+        "sudo apt -y upgrade"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 10",
+        "mkdir -p /home/secops/.ssh",
+        "chmod 700 /home/secops/.ssh"
+      ]
+    }
+  ]
+}
