@@ -2,10 +2,6 @@ output "firewall_mgmt_ip" {
   value = module.firewall.firewall-public-ip
 }
 
-output "firewall_untrust_ip" {
-  value = module.firewall.web-public-ip
-}
-
 ############################################################################################
 # Copyright 2019 Palo Alto Networks.
 #

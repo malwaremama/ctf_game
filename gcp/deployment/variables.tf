@@ -1,6 +1,7 @@
 variable "project_id" {
   description = "Google Project ID."
   type        = string
+  default     = "secops-iac-ctf-000378"
 }
 
 variable "region" {
