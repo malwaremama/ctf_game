@@ -5,7 +5,7 @@ output "mgmt_network" {
 
 // the name of the management subnet
 output "mgmt_subnet" {
-  value = var.network_01_name
+  value = module.mgmt-vpc.0.subnets_names
 }
 
 // the CIDR block for the management subnet
@@ -13,6 +13,29 @@ output "mgmt_subnet_cidr_block" {
   value = module.mgmt-vpc.0.subnets_ips
 }
 
+output "public_subnet" {
+  value = module.pub-vpc.0.subnets_names
+}
+
+output "attacker_subnet" {
+  value = module.pub-vpc.1.subnets_names
+}
+
+output "hosts_subnet" {
+  value = module.priv-vpc.0.subnets_names
+}
+
+output "domain_subnet" {
+  value = module.priv-vpc.1.subnets_names
+}
+
+output "web_subnet" {
+  value = module.web-vpc.0.subnets_names
+}
+
+output "mgmt-allow-inbound-rule" {
+  value = google_compute_firewall.mgmt-allow-inbound.self_link
+}
 
 /**
  *  Copyright 2019 Palo Alto Networks.

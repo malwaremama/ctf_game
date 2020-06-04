@@ -12,4 +12,5 @@ RUN \
 apt update;\
 apt -y install apt-utils; \
 apt -y install make latexmk python3-pip; \
-apt install -y texlive-latex-extra latexmk
+apt install -y texlive-latex-extra latexmk; \
+make python

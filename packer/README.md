@@ -19,5 +19,13 @@ gcloud compute firewall-rules create default-allow-internal --network default --
 - run this command:
 
 ```
-packer build -var 'service_key=ctf-sko21-e5a43042f7d8.json' attacker_ubuntu18.json
+PACKER_LOG=1 packer build -var 'service_key=ctf-sko21-e5a43042f7d8.json' attacker_ubuntu18.json
+```
+
+## manage instances
+
+https://binx.io/blog/2020/04/18/how-to-delete-lingering-packer-instances-on-google-cloud-platform/
+
+```
+pip install gcp-hashicorp-packer-reaper
 ```

@@ -8,7 +8,7 @@
     {
       "type": "googlecompute",
       "account_file": "{{user `my_home`}}/.config/gcloud/{{user `service_key`}}",
-      "project_id": "ctf-sko21",
+      "project_id": "secops-iac-ctf-000378",
       "source_image_family": "ubuntu-1804-lts",
       "zone": "us-central1-a",
       "image_description": "SecOps CTF Attacker Host",

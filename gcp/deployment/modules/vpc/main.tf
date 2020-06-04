@@ -133,6 +133,22 @@ module "db-vpc" {
   ]
 }
 
+resource "google_compute_firewall" "mgmt-allow-inbound" {
+  name    = "mgmt-allow-inbound"
+  network = module.mgmt-vpc.network_self_link
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["443", "22"]
+  }
+
+  source_ranges = [var.allowed_mgmt_cidr]
+}
+
 /**
  *  Copyright 2019 Palo Alto Networks.
  *

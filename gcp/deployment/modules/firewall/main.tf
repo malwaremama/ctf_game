@@ -30,6 +30,25 @@ resource "google_compute_instance" "firewall" {
       // Needed to get a public IP address
     }
   }
+
+  /*
+  network_interface {
+    subnetwork = var.fw_public_subnet
+    network_ip = var.fw_public_ip
+    access_config {
+      // Needed to get a public IP address
+    }
+  }
+
+  network_interface {
+    subnetwork = var.fw_attacker_subnet
+    network_ip = var.fw_attacker_ip
+    access_config {
+      // Needed to get a public IP address
+    }
+  }
+*/
+
 }
 
 /**

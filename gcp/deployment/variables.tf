@@ -21,22 +21,10 @@ variable "trusted_network" {
   default     = "0.0.0.0/0"
 }
 
-variable "name" {
-  description = "An idenfitying name used for names of cloud resources"
-  default     = "secops"
-}
-
-variable "cidr" {
-  default = "192.168.100.0/24"
-}
-
-variable "machine_type" {
-  default = "n1-standard-16"
-}
-
+// override in tarraform.tfvars
 variable "gcp_key_filename" {
   description = "What's the json key filename located in your <home>/.gcloud/ directory path?"
-  default     = "secops-iac-ctf-000378-ca7e78916a38.json"
+  default     = "fdiaz-terraform-admin.json"
 }
 
 variable "ssh_key" {
