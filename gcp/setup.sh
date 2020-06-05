@@ -81,10 +81,16 @@ EOF
   gsutil versioning set on gs://${TF_ADMIN}
 }
 
+function machine_images {
+  gcloud compute instances import ubuntu1-secops-ctf-000378 \
+    --source-uri=gs://ctf-backup/Ubuntu_18_attacker.ova --os=ubuntu-1804
+}
+
 function main {
   setup_environment
   #service_user
   #tfstate_bucket
+  #machine_images
 }
 
 main

@@ -1,7 +1,28 @@
+// NETWORKS
+
 // The name of the management network
 output "mgmt_network" {
-  value = module.mgmt-vpc.network_name
+  //value = module.mgmt-vpc.network_name
+  value = "management"
 }
+
+output "public_network" {
+  value = module.pub-vpc.network_name
+}
+
+output "private_network" {
+  value = module.priv-vpc.network_name
+}
+
+output "web_network" {
+  value = module.web-vpc.network_name
+}
+
+output "db_network" {
+  value = module.db-vpc.network_name
+}
+
+// SUBNETS
 
 // the name of the management subnet
 output "mgmt_subnet" {
@@ -32,6 +53,8 @@ output "domain_subnet" {
 output "web_subnet" {
   value = module.web-vpc.0.subnets_names
 }
+
+// RULES 
 
 output "mgmt-allow-inbound-rule" {
   value = google_compute_firewall.mgmt-allow-inbound.self_link

@@ -24,6 +24,7 @@ module "vpc" {
   allowed_mgmt_cidr = var.allowed_mgmt_cidr
 }
 
+/*
 module "firewall" {
   source = "./modules/firewall"
 
@@ -40,7 +41,6 @@ module "firewall" {
   fw_mgmt_ip     = "10.250.116.254"
   fw_mgmt_rule   = module.vpc.mgmt-allow-inbound-rule
 
-  /*
   fw_public_subnet = module.vpc.public_subnet
   fw_public_ip     = "10.200.200.254"
   fw_public_rule   = module.vpc.public-allow-inbound-rule
@@ -56,10 +56,21 @@ module "firewall" {
   fw_domain_subnet = module.vpc.domain_subnet
   fw_domain_ip     = "172.16.20.254"
   fw_domain_rule   = module.vpc.domain-allow-inbound-rule
-*/
-
 }
 
+module "attacker" {
+  source = "./modules/attacker"
+
+  attacker_name         = "attacker-linux"
+  attacker_zone         = var.zone
+  attacker_image        = "secops-ctf-attacker-ubuntu-18"
+  attacker_machine_type = "n1-standard-1"
+  attacker_ssh_key      = "admin:${var.ssh_key}"
+  attacker_network      = module.vpc.public_network
+  attacker_subnet_id    = module.vpc.attacker_subnet
+  attacker_ip           = "192.168.0.13"
+}
+*/
 /**
  *  Copyright 2019 Palo Alto Networks.
  *

@@ -18,3 +18,4 @@ Welcome to home documentation
    _source/vscode
    _source/mac_quickstart
    _source/image_setup
+   _source/packer
