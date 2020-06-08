@@ -15,7 +15,7 @@ Welcome to home documentation
    :numbered:
 
    _source/introduction
-   _source/vscode
    _source/mac_quickstart
    _source/image_setup
+   _source/vscode
    _source/packer
