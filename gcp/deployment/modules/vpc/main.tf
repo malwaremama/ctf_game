@@ -32,7 +32,7 @@ module "mgmt-vpc" {
       subnet_name           = local.network_01_subnet_01
       subnet_ip             = "10.250.116.0/24"
       subnet_region         = "us-central1"
-      subnet_private_access = "false"
+      subnet_private_access = "true"
       subnet_flow_logs      = "true"
     }
   ]
@@ -52,7 +52,7 @@ module "pub-vpc" {
       subnet_name           = local.network_02_subnet_01
       subnet_ip             = "10.200.200.0/24"
       subnet_region         = "us-central1"
-      subnet_private_access = "false"
+      subnet_private_access = "true"
       subnet_flow_logs      = "true"
     },
     {
@@ -60,7 +60,7 @@ module "pub-vpc" {
       subnet_name           = local.network_02_subnet_02
       subnet_ip             = "192.168.0.0/24"
       subnet_region         = "us-central1"
-      subnet_private_access = "false"
+      subnet_private_access = "true"
       subnet_flow_logs      = "true"
     }
   ]
@@ -88,7 +88,7 @@ module "priv-vpc" {
       subnet_name           = local.network_03_subnet_02
       subnet_ip             = "172.16.20.0/24"
       subnet_region         = "us-central1"
-      subnet_private_access = "false"
+      subnet_private_access = "true"
       subnet_flow_logs      = "true"
     }
   ]
@@ -108,7 +108,7 @@ module "web-vpc" {
       subnet_name           = local.network_04_subnet_01
       subnet_ip             = "172.16.100.0/24"
       subnet_region         = "us-central1"
-      subnet_private_access = "false"
+      subnet_private_access = "true"
       subnet_flow_logs      = "true"
     }
   ]
@@ -127,7 +127,7 @@ module "db-vpc" {
       subnet_name           = local.network_05_subnet_01
       subnet_ip             = "172.16.200.0/24"
       subnet_region         = "us-central1"
-      subnet_private_access = "false"
+      subnet_private_access = "true"
       subnet_flow_logs      = "true"
     }
   ]

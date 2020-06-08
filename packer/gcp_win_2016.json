@@ -19,10 +19,7 @@
             "communicator": "winrm",
             "winrm_username": "deployer",
             "winrm_insecure": true,
-            "winrm_use_ssl": true,
-            "metadata": {
-                "windows-startup-script-cmd": "winrm quickconfig -quiet & net user /add deployer & net localgroup administrators deployer /add & winrm set winrm/config/service/auth @{Basic=\"true\"}"
-            }
+            "winrm_use_ssl": true
         }
     ]
 }
