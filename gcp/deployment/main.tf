@@ -37,7 +37,7 @@ module "firewall" {
   fw_ssh_key = "admin:${var.ssh_key}"
 
   fw_mgmt_subnet = module.vpc.mgmt_subnet
-  fw_mgmt_ip     = "10.250.116.254"
+  fw_mgmt_ip     = "10.10.116.2"
   fw_mgmt_rule   = module.vpc.mgmt-allow-inbound-rule
 
   /*
@@ -67,9 +67,8 @@ module "attacker" {
   attacker_image        = "secops-ctf-attacker-ubuntu-18"
   attacker_machine_type = "n1-standard-1"
   attacker_ssh_key      = "admin:${var.ssh_key}"
-  attacker_network      = module.vpc.public_network
-  attacker_subnet_id    = module.vpc.attacker_subnet
-  attacker_ip           = "192.168.0.13"
+  attacker_subnet       = module.vpc.attacker_subnet
+  attacker_ip           = "10.10.24.13"
 }
 
 /**

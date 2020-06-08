@@ -17,12 +17,7 @@ variable "attacker_ssh_key" {
   type        = string
 }
 
-variable "attacker_network" {
-  description = "Network name"
-  type        = string
-}
-
-variable "attacker_subnet_id" {
+variable "attacker_subnet" {
   description = "The subnet in which the database server instance will be deployed"
   type        = string
 }

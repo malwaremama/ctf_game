@@ -17,12 +17,16 @@
 # most verbose and it is the default if TF_LOG is set to something
 # other than a log level name.
 export TF_LOG="TRACE"
+echo "Set terraform log level to: ${TF_LOG}"
 export TF_LOG_PATH="/tmp/terraform.franklin"
+echo "Set terraform log file to: ${TF_LOG_PATH}"
 
 # Leave commented out if no organization
 #export TF_VAR_org_id=`gcloud organizations list | grep -v DISPLAY | cut -f3 -d' '`
 export TF_VAR_billing_account=`gcloud beta billing accounts list | grep -v ACCOUNT | cut -f1 -d' '`
 export TF_ADMIN="secops-iac-ctf-000378"
-export TF_CREDS="~/.config/gcloud/${USER}-terraform-admin.json"
-export GOOGLE_APPLICATION_CREDENTIALS=${TF_CREDS}
-export GOOGLE_PROJECT=${TF_ADMIN}
+export TF_CREDS="${HOME}/.config/gcloud/${USER}-terraform-admin.json"
+export GOOGLE_APPLICATION_CREDENTIALS="${TF_CREDS}"
+echo "Set GOOGLE_APPLICATION_CREDENTIALS to: ${TF_CREDS}"
+export GOOGLE_PROJECT="${TF_ADMIN}"
+echo "Set GOOGLE_PROJECT to: ${TF_ADMIN}"

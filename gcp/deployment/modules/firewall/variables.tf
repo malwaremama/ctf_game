@@ -34,9 +34,8 @@ variable "fw_ssh_key" {
 }
 
 variable "fw_mgmt_subnet" {
-  description = "The management subnet of the firewall instance"
+  description = "The name of the management subnet of the firewall instance"
   type        = string
-  default     = "10.250.116.0"
 }
 
 variable "fw_mgmt_ip" {

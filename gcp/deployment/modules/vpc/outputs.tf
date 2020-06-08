@@ -1,57 +1,32 @@
-// NETWORKS
-
-// The name of the management network
-output "mgmt_network" {
-  //value = module.mgmt-vpc.network_name
-  value = "management"
-}
-
-output "public_network" {
-  value = module.pub-vpc.network_name
-}
-
-output "private_network" {
-  value = module.priv-vpc.network_name
-}
-
-output "web_network" {
-  value = module.web-vpc.network_name
-}
-
-output "db_network" {
-  value = module.db-vpc.network_name
-}
-
 // SUBNETS
-
 // the name of the management subnet
 output "mgmt_subnet" {
-  value = module.mgmt-vpc.0.subnets_names
+  value = module.mgmt-vpc.subnets_names[0]
 }
 
 // the CIDR block for the management subnet
 output "mgmt_subnet_cidr_block" {
-  value = module.mgmt-vpc.0.subnets_ips
+  value = module.mgmt-vpc.subnets_ips[0]
 }
 
 output "public_subnet" {
-  value = module.pub-vpc.0.subnets_names
+  value = module.pub-vpc.subnets_names[0]
 }
 
 output "attacker_subnet" {
-  value = module.pub-vpc.1.subnets_names
+  value = module.pub-vpc.subnets_names[1]
 }
 
 output "hosts_subnet" {
-  value = module.priv-vpc.0.subnets_names
+  value = module.priv-vpc.subnets_names[0]
 }
 
 output "domain_subnet" {
-  value = module.priv-vpc.1.subnets_names
+  value = module.priv-vpc.subnets_names[1]
 }
 
 output "web_subnet" {
-  value = module.web-vpc.0.subnets_names
+  value = module.web-vpc.subnets_names[0]
 }
 
 // RULES 

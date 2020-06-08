@@ -5,6 +5,7 @@ resource "google_compute_instance" "firewall" {
   min_cpu_platform          = var.fw_machine_cpu
   can_ip_forward            = true
   allow_stopping_for_update = true
+  deletion_protection       = false
 
   boot_disk {
     initialize_params {
@@ -48,6 +49,10 @@ resource "google_compute_instance" "firewall" {
     }
   }
 */
+  scheduling {
+    preemptible       = true
+    automatic_restart = false
+  }
 
 }
 
