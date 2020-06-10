@@ -35,8 +35,7 @@ resource "google_compute_instance" "attacker" {
     // The private IP address to assign to the instance. 
     network_ip = var.attacker_ip
     // The name or self_link of the subnetwork to attach this interface to.
-    //subnetwork = var.attacker_subnet
-    subnetwork = "public-attacker"
+    subnetwork = var.attacker_subnet
 
     access_config {
     }

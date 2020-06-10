@@ -1,8 +1,6 @@
-/*
 output "firewall_mgmt_ip" {
   value = module.firewall.firewall-public-ip
 }
-*/
 
 /**
  *  Copyright 2019 Palo Alto Networks.

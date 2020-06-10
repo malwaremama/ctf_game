@@ -32,7 +32,6 @@ resource "google_compute_instance" "firewall" {
     }
   }
 
-  /*
   network_interface {
     subnetwork = var.fw_public_subnet
     network_ip = var.fw_public_ip
@@ -42,13 +41,13 @@ resource "google_compute_instance" "firewall" {
   }
 
   network_interface {
-    subnetwork = var.fw_attacker_subnet
-    network_ip = var.fw_attacker_ip
+    subnetwork = var.fw_domain_subnet
+    network_ip = var.fw_domain_ip
     access_config {
       // Needed to get a public IP address
     }
   }
-*/
+
   scheduling {
     preemptible       = true
     automatic_restart = false

@@ -10,29 +10,41 @@ output "mgmt_subnet_cidr_block" {
 }
 
 output "public_subnet" {
-  value = module.pub-vpc.subnets_names[0]
-}
-
-output "attacker_subnet" {
   value = module.pub-vpc.subnets_names[1]
 }
 
+output "attacker_subnet" {
+  value = module.pub-vpc.subnets_names[0]
+}
+
 output "hosts_subnet" {
-  value = module.priv-vpc.subnets_names[0]
+  value = module.priv-vpc.subnets_names[1]
 }
 
 output "domain_subnet" {
-  value = module.priv-vpc.subnets_names[1]
+  value = module.priv-vpc.subnets_names[0]
 }
 
 output "web_subnet" {
   value = module.web-vpc.subnets_names[0]
 }
 
+output "db_subnet" {
+  value = module.db-vpc.subnets_names[0]
+}
+
 // RULES 
 
 output "mgmt-allow-inbound-rule" {
   value = google_compute_firewall.mgmt-allow-inbound.self_link
+}
+
+output "public-allow-inbound-rule" {
+  value = google_compute_firewall.public-allow-inbound.self_link
+}
+
+output "private-allow-inbound-rule" {
+  value = google_compute_firewall.private-allow-inbound.self_link
 }
 
 /**
@@ -50,3 +62,4 @@ output "mgmt-allow-inbound-rule" {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 

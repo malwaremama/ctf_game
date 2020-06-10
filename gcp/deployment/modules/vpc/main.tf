@@ -10,13 +10,23 @@ locals {
   // attacker
   network_02_subnet_02 = "${var.network_02_name}-attacker"
   // hosts
-  network_03_subnet_01 = "${var.network_03_name}-hosts"
+  network_03_subnet_01 = "${var.network_03_name}-domain"
   // domain
-  network_03_subnet_02 = "${var.network_03_name}-domain"
+  network_03_subnet_02 = "${var.network_03_name}-hosts"
   // web
   network_04_subnet_01 = var.network_04_name
   // db
   network_05_subnet_01 = var.network_05_name
+
+  network_01_routes = [
+    {
+      name              = "${var.network_01_name}-egress-inet"
+      description       = "route through IGW to access internet"
+      destination_range = "0.0.0.0/0"
+      tags              = "egress-inet"
+      next_hop_internet = "true"
+    },
+  ]
 }
 
 // The Management VPC
@@ -64,6 +74,8 @@ module "pub-vpc" {
       subnet_flow_logs      = "true"
     }
   ]
+
+  routes = "${local.network_01_routes}"
 }
 
 // The Private VPC
@@ -76,17 +88,17 @@ module "priv-vpc" {
 
   subnets = [
     {
-      // hosts
+      // domain
       subnet_name           = local.network_03_subnet_01
-      subnet_ip             = "10.10.10.0/24"
+      subnet_ip             = "10.10.20.0/24"
       subnet_region         = "us-central1"
       subnet_private_access = "false"
       subnet_flow_logs      = "true"
     },
     {
-      // domain
+      // hosts
       subnet_name           = local.network_03_subnet_02
-      subnet_ip             = "10.10.20.0/24"
+      subnet_ip             = "10.10.10.0/24"
       subnet_region         = "us-central1"
       subnet_private_access = "true"
       subnet_flow_logs      = "true"
@@ -147,6 +159,53 @@ resource "google_compute_firewall" "mgmt-allow-inbound" {
   }
 
   source_ranges = [var.allowed_mgmt_cidr]
+}
+
+resource "google_compute_firewall" "public-allow-inbound" {
+  name    = "public-allow-inbound"
+  network = module.pub-vpc.network_self_link
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["443", "22"]
+  }
+
+  source_ranges = [var.allowed_mgmt_cidr]
+}
+
+resource "google_compute_firewall" "private-allow-inbound" {
+  name    = "private-allow-inbound"
+  network = module.priv-vpc.network_self_link
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["443", "22"]
+  }
+
+  source_ranges = [var.allowed_mgmt_cidr]
+}
+
+module "peering-priv-web" {
+  source = "terraform-google-modules/network/google//modules/network-peering"
+
+  local_network = module.priv-vpc.network_self_link
+  peer_network  = module.web-vpc.network_self_link
+}
+
+module "peering-priv-db" {
+  source = "terraform-google-modules/network/google//modules/network-peering"
+
+  local_network     = module.priv-vpc.network_self_link
+  peer_network      = module.db-vpc.network_self_link
+  module_depends_on = [module.peering-priv-web.complete]
 }
 
 /**

@@ -41,79 +41,40 @@ variable "fw_mgmt_subnet" {
 variable "fw_mgmt_ip" {
   description = "The IP address of firewall instance management interface"
   type        = string
-  default     = "10.250.116.254"
 }
 
 variable "fw_public_subnet" {
-  type    = string
-  default = "10.200.200.0"
+  type = string
 }
 
 variable "fw_public_ip" {
-  type    = string
-  default = "10.200.200.254"
-}
-
-variable "fw_attacker_subnet" {
-  type    = string
-  default = "192.168.0.0"
-}
-
-variable "fw_attacker_ip" {
-  type    = string
-  default = "192.168.0.254"
-}
-
-variable "fw_hosts_subnet" {
-  type    = string
-  default = " 172.16.10.0"
-}
-
-variable "fw_hosts_ip" {
-  type    = string
-  default = "172.16.10.254"
+  description = "The IP address of the firewall interface to this subnet"
+  type        = string
 }
 
 variable "fw_domain_subnet" {
-  type    = string
-  default = "172.16.20.0"
+  type = string
 }
 
 variable "fw_domain_ip" {
-  type    = string
-  default = "172.16.20.254"
+  description = "The IP address of the firewall interface to this subnet"
+  type        = string
 }
 
-variable "fw_web_subnet" {
-  type    = string
-  default = "172.16.100.0"
-}
+// Rules 
 
 variable "fw_mgmt_rule" {
   description = "The GCP firewall rule for the firewall intance management interface"
   type        = string
 }
-/*
+
 variable "fw_public_rule" {
   type = string
 }
 
-variable "fw_attacker_rule" {
+variable "fw_private_rule" {
   type = string
 }
-
-variable "fw_hosts_rule" {
-  type = string
-}
-
-variable "fw_domain_rule" {
-  type = string
-}
-
-variable "fw_web_rule" {
-  type = string
-}
-*/
 
 /**
  *  Copyright 2019 Palo Alto Networks.

@@ -37,26 +37,17 @@ module "firewall" {
   fw_ssh_key = "admin:${var.ssh_key}"
 
   fw_mgmt_subnet = module.vpc.mgmt_subnet
-  fw_mgmt_ip     = "10.10.116.2"
+  fw_mgmt_ip     = "10.10.116.253"
   fw_mgmt_rule   = module.vpc.mgmt-allow-inbound-rule
 
-  /*
   fw_public_subnet = module.vpc.public_subnet
-  fw_public_ip     = "10.200.200.254"
+  fw_public_ip     = "10.10.200.253"
   fw_public_rule   = module.vpc.public-allow-inbound-rule
 
-  fw_attacker_subnet = module.vpc.attacker_subnet
-  fw_attacker_ip     = "192.168.0.254"
-  fw_attacker_rule   = module.vpc.attacker-allow-inbound-rule
-
-  fw_hosts_subnet = module.vpc.hosts_subnet
-  fw_hosts_ip     = "172.16.10.254"
-  fw_hosts_rule   = module.vpc.hosts-allow-inbound-rule
-
   fw_domain_subnet = module.vpc.domain_subnet
-  fw_domain_ip     = "172.16.20.254"
-  fw_domain_rule   = module.vpc.domain-allow-inbound-rule
-  */
+  fw_domain_ip     = "10.10.20.253"
+  fw_private_rule  = module.vpc.private-allow-inbound-rule
+
 }
 
 module "attacker" {

@@ -20,6 +20,7 @@ variable "attacker_ssh_key" {
 variable "attacker_subnet" {
   description = "The subnet in which the database server instance will be deployed"
   type        = string
+  default     = "public-attacker"
 }
 
 variable "attacker_ip" {
