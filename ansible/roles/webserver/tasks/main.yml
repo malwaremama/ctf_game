@@ -1,0 +1,9 @@
+---
+
+- name: Set up some system packages
+  include: packages.yml
+
+- name: ensure apache is running
+  service:
+    name: httpd
+    state: started
