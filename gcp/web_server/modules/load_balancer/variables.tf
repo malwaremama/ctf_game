@@ -1,9 +1,21 @@
-output "firewall_mgmt_ip" {
-  value = module.firewall.firewall-public-ip
+variable "project_id" {
+  description = "The project ID to host the network in"
+  type        = string
 }
 
-output "attacker_ip" {
-  value = module.attacker.attacker_ip
+variable "lb_zone" {
+  description = "The GCP zone in which the web server instance will be deployed"
+  type        = string
+}
+
+variable "lb_name" {
+  description = "Name of the load balancer"
+  type        = string
+}
+
+variable "web-1-name" {
+  description = "Name of first web instance"
+  type        = string
 }
 
 /**

@@ -25,10 +25,6 @@ output "domain_subnet" {
   value = module.priv-vpc.subnets_names[0]
 }
 
-output "web_subnet" {
-  value = module.web-vpc.subnets_names[0]
-}
-
 output "db_subnet" {
   value = module.db-vpc.subnets_names[0]
 }

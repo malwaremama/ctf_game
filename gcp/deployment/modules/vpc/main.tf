@@ -14,7 +14,7 @@ locals {
   // domain
   network_03_subnet_02 = "${var.network_03_name}-hosts"
   // web
-  network_04_subnet_01 = var.network_04_name
+  //network_04_subnet_01 = var.network_04_name
   // db
   network_05_subnet_01 = var.network_05_name
 
@@ -106,26 +106,6 @@ module "priv-vpc" {
   ]
 }
 
-// The Web VPC
-module "web-vpc" {
-  source       = "terraform-google-modules/network/google"
-  version      = "~> 2.1"
-  project_id   = var.project_id
-  network_name = var.network_04_name
-  routing_mode = "GLOBAL"
-
-  subnets = [
-    {
-      // web
-      subnet_name           = local.network_04_subnet_01
-      subnet_ip             = "10.10.100.0/24"
-      subnet_region         = "us-central1"
-      subnet_private_access = "true"
-      subnet_flow_logs      = "true"
-    }
-  ]
-}
-
 // The DB VPC
 module "db-vpc" {
   source       = "terraform-google-modules/network/google"
@@ -193,19 +173,21 @@ resource "google_compute_firewall" "private-allow-inbound" {
   source_ranges = [var.allowed_mgmt_cidr]
 }
 
+/*
 module "peering-priv-web" {
   source = "terraform-google-modules/network/google//modules/network-peering"
 
   local_network = module.priv-vpc.network_self_link
   peer_network  = module.web-vpc.network_self_link
 }
+*/
 
 module "peering-priv-db" {
   source = "terraform-google-modules/network/google//modules/network-peering"
 
-  local_network     = module.priv-vpc.network_self_link
-  peer_network      = module.db-vpc.network_self_link
-  module_depends_on = [module.peering-priv-web.complete]
+  local_network = module.priv-vpc.network_self_link
+  peer_network  = module.db-vpc.network_self_link
+  //module_depends_on = [module.peering-priv-web.complete]
 }
 
 /**

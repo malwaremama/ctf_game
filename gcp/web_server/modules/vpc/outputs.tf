@@ -1,9 +1,5 @@
-output "firewall_mgmt_ip" {
-  value = module.firewall.firewall-public-ip
-}
-
-output "attacker_ip" {
-  value = module.attacker.attacker_ip
+output "web_subnet" {
+  value = module.web-vpc.subnets_names[0]
 }
 
 /**

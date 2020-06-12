@@ -1,9 +1,5 @@
-output "firewall_mgmt_ip" {
-  value = module.firewall.firewall-public-ip
-}
-
 output "attacker_ip" {
-  value = module.attacker.attacker_ip
+  value = google_compute_instance.attacker.network_interface.0.network_ip
 }
 
 /**
@@ -21,4 +17,3 @@ output "attacker_ip" {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 

@@ -1,9 +1,25 @@
-output "firewall_mgmt_ip" {
-  value = module.firewall.firewall-public-ip
+variable "project_id" {
+  description = "The project ID to host the network in"
+  type        = string
 }
 
-output "attacker_ip" {
-  value = module.attacker.attacker_ip
+variable "network_01_name" {
+  description = "The name of the first VPC network being created"
+}
+
+variable "private_subnet_cidr_1" {
+  description = "The subnet/CIDR of the VPC"
+  type        = string
+}
+
+variable "gcp_region_1" {
+  description = "The name of the Region"
+  type        = string
+}
+
+variable "allowed_mgmt_cidr" {
+  description = "The source address that will be allowed to access the lab environment"
+  type        = string
 }
 
 /**

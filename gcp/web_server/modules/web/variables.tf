@@ -7,6 +7,7 @@ variable "web_zone" {
   description = "The GCP zone in which the web server instance will be deployed"
   type        = string
 }
+
 variable "web_machine_type" {
   description = "The GCP machine type for the web server instance"
   type        = string
@@ -14,6 +15,11 @@ variable "web_machine_type" {
 
 variable "web_ssh_key" {
   description = "The SSH key of the web server instance admin user"
+  type        = string
+}
+
+variable "web_domain" {
+  description = "The TLD for the web server"
   type        = string
 }
 
@@ -30,6 +36,10 @@ variable "web_ip" {
 variable "web_image" {
   description = "The GCP image used to deploy the web server instance"
   type        = string
+}
+
+variable "network_01_name" {
+  description = "The name of the first VPC network being created"
 }
 
 /**

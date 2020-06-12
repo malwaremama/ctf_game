@@ -9,7 +9,6 @@ resource "google_compute_instance" "attacker" {
   zone                      = var.attacker_zone
   can_ip_forward            = true
   allow_stopping_for_update = true
-  count                     = 1
   deletion_protection       = false
 
   metadata = {

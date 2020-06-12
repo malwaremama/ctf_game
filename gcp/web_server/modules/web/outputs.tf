@@ -1,10 +1,20 @@
-output "firewall_mgmt_ip" {
-  value = module.firewall.firewall-public-ip
+output "web-1-name" {
+  value = google_compute_instance.sandy-web.hostname
+}
+output "web-1-internal-ip" {
+  value = google_compute_instance.sandy-web.network_interface.0.network_ip
 }
 
-output "attacker_ip" {
-  value = module.attacker.attacker_ip
+/*
+output "web-2-name" {
+  value = google_compute_instance.web_private_2.name
 }
+
+output "web-2-internal-ip" {
+  value = google_compute_instance.web_private_2.network_interface.0.network_ip
+}
+*/
+
 
 /**
  *  Copyright 2019 Palo Alto Networks.
@@ -21,4 +31,3 @@ output "attacker_ip" {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
