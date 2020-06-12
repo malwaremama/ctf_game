@@ -43,15 +43,17 @@ module "web" {
   web_ip           = "10.10.100.13"
 }
 
+/*
 module "load_balancer" {
   source     = "./modules/load_balancer"
   project_id = var.project_id
   lb_name    = "sandy-lb"
   lb_zone    = var.zone
   web-1-name = module.web.web-1-name
-  //web-1-internal-ip = module.web.web-1-internal-ip
+  // add more web servers to the load balancer here
+  //web-2-name = module.web.web-2-name
 }
-
+*/
 
 /**
  *  Copyright 2019 Palo Alto Networks.

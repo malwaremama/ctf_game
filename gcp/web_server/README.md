@@ -26,3 +26,11 @@ gcloud iam service-accounts keys create ${TF_CREDS} \
 fdiaz at REMMAC11ELVDT ~ 💰  cat terraform.tfvars| grep gcp_key
 gcp_key_filename = "ctf-sko21-fed0a0666.json"
 ```
+
+## Login
+
+```
+gcloud beta compute ssh --zone "us-central1-a" "sandy-linux" --project "secops-iac-ctf-000378"
+```
+
+Fix `/home/ubuntu/.ssh/authorized_keys` file

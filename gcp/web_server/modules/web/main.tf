@@ -3,6 +3,10 @@ data "google_compute_image" "web_ubuntu" {
   name = var.web_image
 }
 
+resource "google_compute_address" "static" {
+  name = "ipv4-address"
+}
+
 resource "google_compute_instance" "sandy-web" {
   name         = var.web_name
   machine_type = var.web_machine_type
