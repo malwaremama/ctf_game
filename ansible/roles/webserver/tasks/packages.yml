@@ -1,0 +1,12 @@
+---
+- name: 'Update APT package cache'
+  apt:
+    update_cache: yes
+    upgrade: safe
+  tags: admin
+
+- name: Install Apache 2.x
+  apt:
+    package: "apache2"
+    state: latest
+  tags: admin
