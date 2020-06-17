@@ -1,4 +1,3 @@
-// DB-SERVER Variables
 variable "db_name" {
   description = "The name of the database server instance"
   type        = string
@@ -48,3 +47,4 @@ variable "db_image" {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 

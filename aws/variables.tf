@@ -11,37 +11,21 @@ variable "availability_zone" {
   default     = "us-west-2c"
 }
 
-variable "key_name" {
-  default     = "scoreboard"
-  description = "Name of your SSH key in EC2"
-}
-
-variable "mgmt_subnet_cidr" {
-  default = "10.10.116.0/24"
-}
-
-variable "public_subnet_cidr" {
-  default = "10.10.200.0/24"
-}
-
-variable "attacker_subnet_cidr" {
-  default = "10.10.168.0/24"
-}
-
 variable "hosts_subnet_cidr" {
+  type    = string
   default = "10.10.10.0/24"
 }
 
 variable "domain_subnet_cidr" {
-  default = "10.10.20.0/24"
+  description = "The domain subnet CIDR, e.g.:  x.x.x.x/24"
+  type        = string
+  default     = "10.10.20.0/24"
 }
 
-variable "web_subnet_cidr" {
-  default = "10.10.100.0/24"
-}
-
-variable "db_subnet_cidr" {
-  default = "10.10.101.0/24"
+// You have to manually add this key to AWS console
+variable "key_name" {
+  default     = "scoreboard"
+  description = "Name of your SSH key in EC2"
 }
 
 # You can update this to match your personal public SSH key half.
@@ -54,3 +38,20 @@ variable "key_path" {
   default     = "~/.ssh/id_rsa"
   description = "Path to your SSH private key half on local dev machine"
 }
+
+/**
+ *  Copyright 2019 Palo Alto Networks.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
