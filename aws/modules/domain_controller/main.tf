@@ -1,9 +1,8 @@
-# standup windows 2016 domain controller
 resource "aws_instance" "windows_2016_dc" {
-  ami           = var.windows_2016_dc_ami
-  instance_type = "t2.large"
-  key_name = var.key_name
-  subnet_id = "${aws_subnet.default.0.id}"
+  ami                    = var.windows_2016_dc_ami
+  instance_type          = "t2.large"
+  key_name               = var.key_name
+  subnet_id              = "${aws_subnet.default.0.id}"
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
   tags = {
     Name = "attack-range_windows_2016_dc"
@@ -16,9 +15,9 @@ Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw
 </powershell>
 EOF
 
- provisioner "local-exec" {
-    working_dir = "../ansible"
-    command = "sleep 60;cp hosts.default hosts; sed -i '' 's/PUBLICIP/${aws_instance.windows_2016_dc.public_ip}/g' hosts;ansible-playbook -i hosts playbooks/windows_dc.yml"
+provisioner "local-exec" {
+    working_dir = "../../../ansible"
+    command     = "sleep 60;cp hosts.default hosts; sed -i '' 's/PUBLICIP/${aws_instance.windows_2016_dc.public_ip}/g' hosts;ansible-playbook -i hosts playbooks/windows_dc.yml"
   }
 }
 

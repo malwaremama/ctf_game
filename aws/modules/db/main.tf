@@ -13,6 +13,13 @@ module "db" {
     Name        = "SecOps-database"
     Environment = "secops-ctf"
   }
+
+  /*
+  provisioner "local-exec" {
+    working_dir = "../../../ansible"
+    command     = "sleep 60;cp dbserver-startup.sh /home/ubuntu;ansible-playbook playbooks/database.yml"
+  }
+  */
 }
 
 /**

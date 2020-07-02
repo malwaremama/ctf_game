@@ -35,7 +35,6 @@ resource "aws_security_group" "db_vpc_sg" {
   }
 }
 
-
 module "db" {
   source          = "./modules/db"
   db_ami          = "ami-0e5182e21bc8a1560"
@@ -47,8 +46,13 @@ module "db" {
   db_subnet_id    = module.vpc.db_public_subnet
   db_ip           = "10.11.169.13"
   db_sec_grp      = aws_security_group.db_vpc_sg.id
-
 }
+
+/*
+module "domain_controller" {
+  source = "./modules/domain_controller"
+}
+*/
 
 /**
  *  Copyright 2019 Palo Alto Networks.
