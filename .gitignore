@@ -36,8 +36,9 @@ override.tf.json
 .DS_store
 docs/_build/
 *.pem
-
+ansible/ctf_venv
 
 # /root stuff
 .bash_history
 .cache
+

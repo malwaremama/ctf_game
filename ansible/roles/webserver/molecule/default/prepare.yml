@@ -1,0 +1,6 @@
+---
+- name: Prepare
+  hosts: all
+  vars:
+    SECOPS_MOLECULE_TEST: "true"
+  gather_facts: False

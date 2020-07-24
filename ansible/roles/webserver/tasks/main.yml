@@ -1,4 +1,7 @@
 ---
+- name: Include variables
+  include_vars:
+    file: main.yml
 
 - name: Set up some system packages
   include: packages.yml
@@ -7,3 +10,7 @@
   service:
     name: httpd
     state: started
+  when: SECOPS_MOLECULE_TEST is not defined
+
+- name: Set up the web site
+  include: sandy_website.yml

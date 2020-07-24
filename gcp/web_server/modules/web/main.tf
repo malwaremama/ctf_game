@@ -43,8 +43,25 @@ resource "google_compute_instance" "sandy-web" {
   }
 
   scheduling {
-    preemptible       = true
+    preemptible       = false
     automatic_restart = false
+  }
+
+  # Copy in the bash script we want to execute.
+  # The source is the location of the bash script
+  # on the local linux box you are executing terraform
+  # from.  The destination is on the new AWS instance.
+  provisioner "file" {
+    source      = "files/setup_joey.sh"
+    destination = "/tmp/setup_joey.sh"
+  }
+
+  # Change permissions on bash script and execute from ec2-user.
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/setup_joey.sh",
+      "sudo /tmp/setup_joey.sh",
+    ]
   }
 
 }

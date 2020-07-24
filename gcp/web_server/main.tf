@@ -2,14 +2,14 @@ provider "google" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = file(format("~/.config/gcloud/%s", var.gcp_key_filename))
+  credentials = var.gcp_key_filename
 }
 
 provider "google-beta" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = file(format("~/.config/gcloud/%s", var.gcp_key_filename))
+  credentials = var.gcp_key_filename
 }
 
 module "vpc" {
