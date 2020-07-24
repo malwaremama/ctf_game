@@ -10,3 +10,9 @@
     package: "apache2"
     state: latest
   tags: admin
+
+- name: Python3 pip
+  apt:
+    package: "python3-pip"
+    state: latest
+  tags: admin

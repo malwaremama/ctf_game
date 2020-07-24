@@ -38,7 +38,7 @@ module "web" {
   network_01_name  = var.network_01_name
   web_image        = "secops-ctf-attacker-ubuntu-18"
   web_machine_type = "n1-standard-1"
-  web_ssh_key      = "admin:${var.ssh_key}"
+  web_ssh_key      = "terraform:${var.ssh_key}"
   web_subnet_id    = module.vpc.web_subnet
   web_ip           = "10.10.100.13"
 }

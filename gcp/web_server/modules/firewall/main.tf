@@ -48,6 +48,17 @@ resource "google_compute_firewall" "allow-ssh" {
   source_ranges = [var.allowed_mgmt_cidr]
 }
 
+# allow coinminer app
+resource "google_compute_firewall" "allow-flask" {
+  name    = "${var.network_01_name}-fw-allow-flask"
+  network = var.network_01_name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["5000"]
+  }
+  source_ranges = [var.allowed_mgmt_cidr]
+}
 
 /* allow rdp traffic
 resource "google_compute_firewall" "allow-rdp" {
@@ -76,4 +87,4 @@ resource "google_compute_firewall" "allow-rdp" {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
