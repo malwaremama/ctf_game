@@ -1,8 +1,15 @@
-# how
+# Run the WebServer
 
 ```
-source env.sh
+brew install direnv
 ```
 
-- change to the web_server directory and do terraform apply anytime.
-  - It is intentionally separate from the rest of the infra so it can stay up longer.
+- I use fish shell, [other shells available here](https://direnv.net/docs/hook.html)
+- Add the following line at the end of the `~/.config/fish/config.fish` file:
+
+```fish
+eval (direnv hook fish)
+```
+
+- Change to the web_server directory and do terraform apply anytime.
+  - It is intentionally separate from the rest of the infrastructure.
