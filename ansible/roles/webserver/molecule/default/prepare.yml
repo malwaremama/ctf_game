@@ -4,3 +4,9 @@
   vars:
     SECOPS_MOLECULE_TEST: "true"
   gather_facts: False
+  tasks:
+  - name: Create a directory if it does not exist
+    file:
+      path: "/etc/pygopherd"
+      state: directory
+      mode: '0755'

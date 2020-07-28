@@ -3,6 +3,9 @@
   include_vars:
     file: main.yml
 
+- name: Set up the gopher challenge
+  include: gopher.yml
+
 - name: Set up some system packages
   include: packages.yml
 
