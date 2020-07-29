@@ -3,3 +3,8 @@
   service:
     name: apache2
     state: restarted
+
+- name: restart pygopherd
+  service:
+    name: pygopherd
+    state: restarted

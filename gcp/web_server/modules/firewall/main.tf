@@ -60,6 +60,18 @@ resource "google_compute_firewall" "allow-flask" {
   source_ranges = [var.allowed_mgmt_cidr]
 }
 
+# allow gopher
+resource "google_compute_firewall" "allow-gopher" {
+  name    = "${var.network_01_name}-fw-allow-gopher"
+  network = var.network_01_name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["70"]
+  }
+  source_ranges = [var.allowed_mgmt_cidr]
+}
+
 /* allow rdp traffic
 resource "google_compute_firewall" "allow-rdp" {
   name    = "${var.app_name}-fw-allow-rdp"

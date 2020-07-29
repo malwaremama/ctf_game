@@ -55,8 +55,7 @@ resource "google_compute_instance" "sandy-web" {
     connection {
       type     = "ssh"
       user     = "ubuntu"
-      password = "ubuntu"
-      host     = "${var.host}"
+      private_key = "${file("~/.ssh/google_compute_engine")}"
     }
 
   }
@@ -68,6 +67,7 @@ resource "google_compute_instance" "sandy-web" {
     ]
   }
   */
+
 }
 
 /* Create web server #2

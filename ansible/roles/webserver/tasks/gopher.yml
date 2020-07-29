@@ -21,3 +21,9 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: ensure pygopherd is running
+  service:
+    name: pygopherd
+    state: started
+  when: SECOPS_MOLECULE_TEST is not defined
