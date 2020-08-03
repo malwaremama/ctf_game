@@ -79,3 +79,9 @@
     - hal.jpg
     - margo.jpg
     - mess.png
+
+- name: ensure apache is running
+  service:
+    name: apache2
+    state: started
+  when: SECOPS_MOLECULE_TEST is not defined

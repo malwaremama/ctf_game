@@ -1,4 +1,7 @@
 ---
+
+# https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html
+
 - shell: host myip.opendns.com resolver1.opendns.com | grep address | cut -d' ' -f4
   register: my_ip_address
 
@@ -21,6 +24,20 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: Create a directory if it does not exist
+  file:
+    path: "/var/gopher"
+    state: directory
+    mode: '0755'
+
+- name: Copy Gophermap to Server
+  copy:
+    src: files/gophermap
+    dest: /var/gopher/gophermap
+    owner: root
+    group: root
+    mode: 0644
 
 - name: ensure pygopherd is running
   service:
